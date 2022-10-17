@@ -1,9 +1,16 @@
+import Products from "@/components/Products";
 import { Container } from "@chakra-ui/react";
+import Head from "next/head";
 
 export default function Home() {
   return (
-    <Container maxW="6xl">
-      <div>Shopping </div>
-    </Container>
+    <>
+      <Head>
+        <title>Shoppy</title>
+      </Head>
+      <Container maxW="6xl">
+        <Products />
+      </Container>
+    </>
   );
 }
