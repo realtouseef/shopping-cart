@@ -9,11 +9,14 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
+  Input,
+  InputGroup,
+  InputLeftElement,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { FaBolt, FaShoppingCart } from "react-icons/fa";
+import { FaBolt, FaShoppingCart, FaSearch } from "react-icons/fa";
 
 const Header: React.FunctionComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -21,10 +24,21 @@ const Header: React.FunctionComponent = () => {
 
   return (
     <>
-      <Box as="nav" py="6" bg="gray.100" fontSize="3xl">
+      <Box as="nav" py="6" fontSize="3xl" borderBottom="1px solid #eee">
         <Container maxW="6xl">
           <Flex alignItems="center" justifyContent="space-between">
             <FaBolt />
+
+            {/* search option  */}
+            <InputGroup mx="10px" maxW="25em">
+              <InputLeftElement
+                pointerEvents="none"
+                children={<FaSearch color="gray.300" />}
+              />
+              <Input placeholder="Search" size="md" variant="filled" />
+            </InputGroup>
+
+            {/* Cart option  */}
             <Flex fontSize="4xl" alignItems="center" justifyContent="center">
               <Button ref={drawerRef} onClick={onOpen}>
                 <FaShoppingCart fontSize="26px" />
@@ -33,6 +47,8 @@ const Header: React.FunctionComponent = () => {
           </Flex>
         </Container>
       </Box>
+
+      {/* Drawer option  */}
       <Drawer
         isOpen={isOpen}
         placement="right"
