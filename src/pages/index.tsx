@@ -1,4 +1,4 @@
-import Products from "@/components/Products";
+import Products from "@/components/Product/Products";
 import { Container } from "@chakra-ui/react";
 import Head from "next/head";
 

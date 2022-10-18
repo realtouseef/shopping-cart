@@ -4,7 +4,8 @@
     "paths": {
       "@/components/*": ["./src/components/*"],
       "@/pages/*": ["./src/pages/*"],
-      "@/types/*": ["./src/types/*"]
+      "@/types/*": ["./src/types/*"],
+      "@/context/*": ["./src/context/*"]
     },
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],

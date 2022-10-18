@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { FaBolt, FaShoppingCart, FaSearch } from "react-icons/fa";
+import DrawerComponent from "./Drawer";
 
 const Header: React.FunctionComponent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -60,7 +61,13 @@ const Header: React.FunctionComponent = () => {
       </Box>
 
       {/* Drawer option  */}
-      <Drawer
+      <DrawerComponent
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        drawerHeader="Your Cart"
+      />
+      {/* <Drawer
         isOpen={isOpen}
         placement="right"
         onClose={onClose}
@@ -75,7 +82,7 @@ const Header: React.FunctionComponent = () => {
             <Text>Product goes here</Text>
           </DrawerBody>
         </DrawerContent>
-      </Drawer>
+      </Drawer> */}
     </>
   );
 };
