@@ -45,7 +45,7 @@ const Products: React.FunctionComponent = () => {
     );
   // if(error) return   toastIdRef.current = toast({ description: 'some text' })
   return (
-    <Box>
+    <Box mt="32">
       <SimpleGrid columns={[1, 2, 2, 3]} spacing={10} my="10">
         {data.map(({ id, image, title, price, description }) => {
           return (

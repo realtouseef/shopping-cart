@@ -24,7 +24,18 @@ const Header: React.FunctionComponent = () => {
 
   return (
     <>
-      <Box as="nav" py="6" fontSize="3xl" borderBottom="1px solid #eee">
+      <Box
+        as="nav"
+        py="6"
+        fontSize="3xl"
+        borderBottom="1px solid #eee"
+        position="fixed"
+        top="0"
+        left="0"
+        right="0"
+        zIndex="2"
+        bg="white"
+      >
         <Container maxW="6xl">
           <Flex alignItems="center" justifyContent="space-between">
             <FaBolt />
