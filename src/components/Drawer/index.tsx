@@ -11,37 +11,42 @@ import {
   DrawerOverlay,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { AiOutlinePlus } from "react-icons/ai";
 import CartItemInDrawer from "../CartItemInDrawer";
 
-const DrawerComponent = ({ isOpen, placement, onClose, drawerHeader }) => {
+const DrawerComponent = ({
+  isOpen,
+  onClose,
+  drawerHeader,
+  drawerFooter,
+  drawerIcon,
+}) => {
   const { cartItems } = useShoppingCart();
   const btnRef = useRef();
 
   return (
     <Drawer
       isOpen={isOpen}
-      placement={placement}
+      placement="right"
       onClose={onClose}
       finalFocusRef={btnRef}
-      size="lg"
+      size="md"
     >
       <DrawerOverlay />
-      <DrawerContent>
+      <DrawerContent w="30em" mx="auto" roundedLeft="lg">
         <DrawerCloseButton mt="2" />
         <DrawerHeader>{drawerHeader}</DrawerHeader>
 
         <DrawerBody>
           <Box>
-            {cartItems.map((item) => (
+            {cartItems?.map((item) => (
               <CartItemInDrawer {...item} key={item.id} />
             ))}
           </Box>
         </DrawerBody>
 
         <DrawerFooter>
-          <Button leftIcon={<AiOutlinePlus />} colorScheme="messenger" w="full">
-            Add to Cart
+          <Button w="full" leftIcon={drawerIcon} colorScheme="red">
+            {drawerFooter}
           </Button>
         </DrawerFooter>
       </DrawerContent>

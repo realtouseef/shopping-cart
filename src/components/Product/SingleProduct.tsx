@@ -1,12 +1,21 @@
-import { AiFillStar } from "react-icons/ai";
 import Image from "next/image";
-import { Box, Heading, Text, Button, useDisclosure } from "@chakra-ui/react";
-import { useRef } from "react";
+import {
+  Box,
+  Heading,
+  Text,
+  Button,
+  useDisclosure,
+  useToast,
+} from "@chakra-ui/react";
 import DrawerComponent from "../Drawer";
+import { FaMinus, FaPlus } from "react-icons/fa";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 const SingleProduct = ({ id, image, title, description, price }) => {
-  const { isOpen, onClose, onOpen } = useDisclosure();
-  const btnRef = useRef();
+  const { isOpen, onClose } = useDisclosure();
+  const toast = useToast();
+
+  const { addItemToCart, removeItem, getItemsQuantity } = useShoppingCart();
 
   return (
     <Box key={id} maxW="lg" border="1px solid #eee" rounded="md" p="3">
@@ -20,22 +29,56 @@ const SingleProduct = ({ id, image, title, description, price }) => {
       <Text mb="2" fontSize="2xl" fontWeight="bold">
         ${price}
       </Text>
-      <Button
-        leftIcon={<AiFillStar />}
-        colorScheme="messenger"
-        w="full"
-        ref={btnRef}
-        onClick={onOpen}
-      >
-        Reveal Product
-      </Button>
+      {getItemsQuantity(id) === 0 ? (
+        <Button
+          leftIcon={<FaPlus />}
+          colorScheme="messenger"
+          w="full"
+          //
+          onClick={() => {
+            addItemToCart(id);
+            toast({
+              title: `${title} Added`,
+              description: "We've added your product to the cart.",
+              status: "success",
+              position: "bottom-left",
+              variant: "subtle",
+              duration: 5000,
+              isClosable: true,
+            });
+          }}
+        >
+          Add Product
+        </Button>
+      ) : (
+        <Button
+          leftIcon={<FaMinus />}
+          w="full"
+          colorScheme="red"
+          onClick={() => {
+            removeItem(id);
+            toast({
+              title: `${title} Removed`,
+              description: "We've remove your product from the cart.",
+              status: "error",
+              position: "bottom-left",
+              variant: "subtle",
+              duration: 5000,
+              isClosable: true,
+            });
+          }}
+        >
+          Remove from Cart
+        </Button>
+      )}
 
       {/* Drawer*/}
       <DrawerComponent
         isOpen={isOpen}
-        placement={"bottom"}
         onClose={onClose}
-        drawerHeader="Product #"
+        drawerHeader="Cart"
+        drawerFooter="Remove All Products"
+        drawerIcon={<FaMinus />}
       />
     </Box>
   );
