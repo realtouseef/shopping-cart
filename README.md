@@ -2,6 +2,10 @@
 
 A Shopping cart built w/ Next, TypeScript, Chakra-ui
 
+## Live Version
+
+[https://shoppy-shopping.vercel.app](https://shoppy-shopping.vercel.app)
+
 ## Tech Stack
 
 - NextJS
@@ -10,5 +14,3 @@ A Shopping cart built w/ Next, TypeScript, Chakra-ui
 - Lodash (for debouncing)
 - Chakra-ui
 - React-icons
-
-// header error --- do not pass children as props. Instead, nest children between the opening and closing tags.
