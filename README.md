@@ -2,9 +2,10 @@
 
 A Shopping cart built w/ Next, TypeScript, Chakra-ui
 
-## TODO
+## Tech Stack
 
-- A search bar in the top with debounce
-- drawer from bottom with **add to cart** option
-- a toast saying, **added to cart**
-- move the bottom drawer to a component
+- NextJS
+- TypeScript
+- React-Query
+- Chakra-ui
+- React-icons

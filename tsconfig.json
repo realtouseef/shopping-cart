@@ -6,7 +6,7 @@
       "@/pages/*": ["./src/pages/*"],
       "@/types/*": ["./src/types/*"],
       "@/context/*": ["./src/context/*"],
-      "@/theme/*": ["./src/theme/*"]
+      "@/hooks/*": ["./src/hooks/*"]
     },
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
