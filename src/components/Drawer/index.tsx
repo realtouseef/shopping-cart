@@ -1,25 +1,17 @@
 import { useShoppingCart } from "@/context/ShoppingCartContext";
 import {
-  Box,
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Grid,
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import CartItemInDrawer from "../CartItemInDrawer";
 
-const DrawerComponent = ({
-  isOpen,
-  onClose,
-  drawerHeader,
-  drawerFooter,
-  drawerIcon,
-}) => {
+const DrawerComponent = ({ isOpen, onClose, drawerHeader }) => {
   const { cartItems } = useShoppingCart();
   const btnRef = useRef();
 
@@ -29,7 +21,7 @@ const DrawerComponent = ({
       placement="right"
       onClose={onClose}
       finalFocusRef={btnRef}
-      size="md"
+      size="lg"
     >
       <DrawerOverlay />
       <DrawerContent w="30em" mx="auto" roundedLeft="lg">
@@ -37,18 +29,12 @@ const DrawerComponent = ({
         <DrawerHeader>{drawerHeader}</DrawerHeader>
 
         <DrawerBody>
-          <Box>
+          <Grid templateColumns="repeat(2, 1fr)">
             {cartItems?.map((item) => (
               <CartItemInDrawer {...item} key={item.id} />
             ))}
-          </Box>
+          </Grid>
         </DrawerBody>
-
-        <DrawerFooter>
-          <Button w="full" leftIcon={drawerIcon} colorScheme="red">
-            {drawerFooter}
-          </Button>
-        </DrawerFooter>
       </DrawerContent>
     </Drawer>
   );

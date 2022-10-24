@@ -1,10 +1,4 @@
-import {
-  Box,
-  Center,
-  CircularProgress,
-  SimpleGrid,
-  Spinner,
-} from "@chakra-ui/react";
+import { Box, Center, CircularProgress, SimpleGrid } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import SingleProduct from "./SingleProduct";
 

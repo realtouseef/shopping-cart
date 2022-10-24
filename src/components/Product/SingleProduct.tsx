@@ -73,13 +73,7 @@ const SingleProduct = ({ id, image, title, description, price }) => {
       )}
 
       {/* Drawer*/}
-      <DrawerComponent
-        isOpen={isOpen}
-        onClose={onClose}
-        drawerHeader="Cart"
-        drawerFooter="Remove All Products"
-        drawerIcon={<FaMinus />}
-      />
+      <DrawerComponent isOpen={isOpen} onClose={onClose} drawerHeader="Cart" />
     </Box>
   );
 };

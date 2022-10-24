@@ -1,4 +1,3 @@
-import { useShoppingCart } from "@/context/ShoppingCartContext";
 import {
   Box,
   Button,
@@ -10,11 +9,10 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useRef } from "react";
-import { FaBolt, FaShoppingCart, FaSearch, FaMinus } from "react-icons/fa";
+import { FaBolt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import DrawerComponent from "./Drawer";
 
 const Header: React.FunctionComponent = () => {
-  const { cartItemsQuantity } = useShoppingCart();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef();
 
@@ -49,7 +47,6 @@ const Header: React.FunctionComponent = () => {
             <Flex fontSize="4xl" alignItems="center" justifyContent="center">
               <Button ref={drawerRef} onClick={onOpen}>
                 <FaShoppingCart fontSize="26px" />
-                <Box>{cartItemsQuantity}</Box>
               </Button>
             </Flex>
           </Flex>
@@ -59,11 +56,8 @@ const Header: React.FunctionComponent = () => {
       {/* Drawer option  */}
       <DrawerComponent
         isOpen={isOpen}
-        placement="right"
         onClose={onClose}
         drawerHeader="Your Cart"
-        drawerFooter="Remove From Cart"
-        drawerIcon={<FaMinus />}
       />
     </>
   );
