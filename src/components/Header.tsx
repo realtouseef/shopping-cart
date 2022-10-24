@@ -1,3 +1,4 @@
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 import {
   Box,
   Button,
@@ -13,6 +14,7 @@ import { FaBolt, FaShoppingCart, FaSearch } from "react-icons/fa";
 import DrawerComponent from "./Drawer";
 
 const Header: React.FunctionComponent = () => {
+  const { inputSearchedTerm } = useShoppingCart();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const drawerRef = useRef();
 
@@ -40,7 +42,12 @@ const Header: React.FunctionComponent = () => {
                 pointerEvents="none"
                 children={<FaSearch color="gray.300" />}
               />
-              <Input placeholder="Search" size="md" variant="filled" />
+              <Input
+                placeholder="Search"
+                size="md"
+                variant="filled"
+                onChange={(e) => inputSearchedTerm(e.target.value)}
+              />
             </InputGroup>
 
             {/* Cart option  */}

@@ -1,12 +1,15 @@
 import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { createContext, useContext } from "react";
+import { debounce } from "lodash";
+import { createContext, useContext, useState } from "react";
 
 type ShoppingCartContextProps = {
   getItemsQuantity: (id: number) => number;
   addItemToCart: (id: number) => void;
   removeItem: (id: number) => void;
   cartItems: CartItemsProps[];
+  searchTerm: string;
   cartItemsQuantity: number;
+  inputSearchedTerm: (term: string) => void;
 };
 
 export type CartItemsProps = {
@@ -19,10 +22,15 @@ const ShoppingCartContext = createContext({} as ShoppingCartContextProps);
 export const useShoppingCart = () => useContext(ShoppingCartContext);
 
 export const ShoppingCartProvider = ({ children }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useLocalStorage<CartItemsProps[]>(
     "shopping-cart",
     []
   );
+
+  const inputSearchedTerm = debounce((e) => {
+    return setSearchTerm(e);
+  }, 500);
 
   function getItemsQuantity(id) {
     return (
@@ -63,6 +71,8 @@ export const ShoppingCartProvider = ({ children }) => {
         removeItem,
         addItemToCart,
         cartItemsQuantity,
+        searchTerm,
+        inputSearchedTerm,
       }}
     >
       {children}

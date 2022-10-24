@@ -9,3 +9,5 @@ A Shopping cart built w/ Next, TypeScript, Chakra-ui
 - React-Query
 - Chakra-ui
 - React-icons
+
+// header error --- do not pass children as props. Instead, nest children between the opening and closing tags.
