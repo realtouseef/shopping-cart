@@ -7,6 +7,7 @@ A Shopping cart built w/ Next, TypeScript, Chakra-ui
 - NextJS
 - TypeScript
 - React-Query
+- Lodash (for debouncing)
 - Chakra-ui
 - React-icons
 

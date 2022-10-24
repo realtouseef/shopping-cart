@@ -38,10 +38,10 @@ const Header: React.FunctionComponent = () => {
 
             {/* search option  */}
             <InputGroup mx="10px" maxW="25em">
-              <InputLeftElement
-                pointerEvents="none"
-                children={<FaSearch color="gray.300" />}
-              />
+              <InputLeftElement pointerEvents="none">
+                <FaSearch color="gray.300" />
+              </InputLeftElement>
+
               <Input
                 placeholder="Search"
                 size="md"
